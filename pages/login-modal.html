@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <div
+      class="modal fade"
+      id="loginModal"
+      tabindex="-1"
+      aria-labelledby="loginModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header justify-content-center">
+            <h5 class="modal-title" id="loginModalLabel">Login</h5>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="input-group flex-nowrap">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="addon-wrapping">@</span>
+                </div>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="email"
+                  placeholder="Email Id"
+                  aria-label="Username"
+                  required
+                />
+              </div>
+              <div class="input-group flex-nowrap my-4">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="addon-wrapping">*</span>
+                </div>
+                <input
+                  type="password"
+                  class="form-control"
+                  id="password"
+                  placeholder="Password"
+                  aria-label="Password"
+                  required
+                />
+              </div>
+              <div class="error-msg d-none">
+                *Username or password is incorrect.
+              </div>
+              <div>
+                <button class="btn btn-outline-primary w-100" type="submit">
+                  Submit
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

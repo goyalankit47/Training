@@ -1,0 +1,33 @@
+#uploadContainer {
+  margin-top: 85px;
+  padding-bottom: 80px;
+}
+
+.error-div {
+  color: var(--danger);
+}
+
+/* #header-fixed {
+  position: fixed;
+  top: 65px;
+  display: none;
+  background-color: white;
+  padding-left: 0;
+  padding-right: 30px;
+} */
+
+/* td, th {
+  min-width: 150px;
+  max-width: 150px;
+} */
+
+/* #tableContainer {
+  height: calc(100vh - 225px);
+} */
+
+@media (min-width: 576px) {
+  th {
+    position: sticky;
+    top: 65px;
+  }
+}

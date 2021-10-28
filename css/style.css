@@ -1,0 +1,88 @@
+/* This file contains common CSS used by all pages */
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  user-select: none;
+}
+
+.d-none {
+  display: none;
+}
+
+.d-block {
+  display: block;
+}
+
+.cur-pointer {
+  cursor: pointer;
+}
+
+.dim-text {
+  color: #afafaf;
+}
+
+.fixed-bar {
+  position: fixed !important;
+  width: 100%;
+  top: 0;
+  z-index: 999;
+  background: #fff;
+  border-bottom: 1px solid #dedede;
+  font-size: 1.2rem;
+}
+
+.cart-quantity {
+  position: absolute;
+  top: -2px;
+  font-size: 12px;
+  right: -8px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 0px 5px;
+  color: white;
+}
+
+#productList {
+  margin-top: 85px;
+  padding-bottom: 80px;
+}
+
+.cart-sec {
+  margin-top: -48px;
+  background: #fff;
+  padding: 5px;
+  position: absolute;
+  width: 100%;
+}
+
+.modify-quan {
+  height: 38px;
+}
+
+.modify-quan .in-cart {
+  color: var(--success);
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 80px;
+}
+
+.modal-backdrop.show {
+  opacity: 1 !important;
+}
+
+.modal-backdrop {
+  background-color: rgb(128, 128, 128) !important;
+}
+
+.filter-item.active {
+  background-color: var(--info);
+  color: #fff;
+}

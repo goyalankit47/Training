@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Checkout</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="-1" />
+    <meta http-equiv="cache-control" content="no-cache" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/checkout.css" />
+    <link rel="stylesheet" href="/css/login-modal.css" />
+    <link rel="stylesheet" href="/css/toast.css" />
+    <link
+      rel="icon"
+      href="https://storage.googleapis.com/www.increff.com/img/favicon.png?v=2"
+      type="image/x-icon"
+    />
+    <link
+      rel="stylesheet"
+      href="https://storage.googleapis.com/static.increff.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+  </head>
+
+  <body>
+    <!-- Initialization of jquery script before DOM rendering -->
+    <script src="https://storage.googleapis.com/static.increff.com/jquery/3.3.1/jquery-3.3.1.min.js"></script>
+    <script type="module" src="/js/checkout.js"></script>
+
+    <!-- Header -->
+    <nav class="navbar navbar-light fixed-bar shadow-sm">
+      <div class="container-fluid px-0">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" id="userName" href="/">Home</a>
+          </li>
+        </ul>
+        <ul
+          class="navbar-nav"
+          data-toggle="tooltip"
+          data-placement="top"
+          title="Upload Order CSV"
+        >
+          <li class="nav-item">
+            <a class="nav-link position-relative" href="/pages/upload">
+              <i class="material-icons">upload_file</i>
+            </a>
+          </li>
+        </ul>
+        <ul
+          class="navbar-nav ml-4"
+          id="logout"
+          data-toggle="tooltip"
+          data-placement="top"
+          title="Logout"
+        >
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <i class="material-icons">logout</i>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Main Body -->
+    <div class="container" id="productDetails">
+      <div class="text-center d-none" id="noData">
+        <h3><b>Cart is Empty!</b></h3>
+        <button
+          class="btn btn-outline-primary"
+          onclick="window.location.href = '/'"
+        >
+          Go To Listing
+        </button>
+      </div>
+      <div class="row d-none" id="cart">
+        <div class="col-12 col-md-6 cart-items rounded px-md-0">
+          <div class="d-flex justify-content-between">
+            <h3>Order</h3>
+          </div>
+          <div class="shadow-sm" id="orderList">
+            <div class="prod-item border-bottom d-flex p-2" id="cartItem">
+              <img
+                src="/assets/no-image.png"
+                class="img-fluid img-thumbnails"
+              />
+              <div class="details d-lg-flex justify-content-between w-100">
+                <div class="static-details">
+                  <h5 class="px-2 font-weight-bold product-heading"></h5>
+                  <p class="dim-text px-2 product-subhead"></p>
+                  <p class="px-2 text-nowrap">
+                    <b class="product-disprice"></b>
+                    <span class="dim-text mx-2">
+                      <strike class="product-price"></strike>
+                    </span>
+                    <span style="color: #ff905a;" class="product-off"></span>
+                  </p>
+                </div>
+                <div
+                  class="modify-quan d-flex justify-content-end align-items-center w-100"
+                >
+                  <div class="in-cart mr-2">
+                    Quantity
+                  </div>
+                  <div class="quantity-sec border rounded">
+                    <span class="subtract mx-2 cur-pointer"> - </span>
+                    <span class="quant mx-2"></span>
+                    <span class="add mx-2 cur-pointer"> + </span>
+                  </div>
+                </div>
+              </div>
+              <button
+                class="btn delete-btn"
+                data-toggle="tooltip"
+                data-placement="top"
+                title="Remove Item from Cart"
+              >
+                <i class="material-icons">delete_outline</i>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-6 payment-details mt-2 mt-md-0">
+          <h3>Payment</h3>
+          <div class="shadow-sm p-4">
+            <div class="d-flex justify-content-between">
+              <b> Total Items </b>
+              <div id="totalItems"></div>
+            </div>
+            <hr />
+            <div class="d-flex justify-content-between">
+              <b> Total Amount </b>
+              <b id="totalAmount"></b>
+            </div>
+            <button
+              class="btn btn-primary csv-download w-100 mt-4 p-2"
+              data-toggle="tooltip"
+              data-placement="top"
+              title="Checkout & Download Order"
+            >
+              Checkout
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer text-muted">
+      <hr />
+      <div class="container-fluid row justify-content-between">
+        <div class="col-12 col-md-6">&copy; 2021; All Rights Reserved.</div>
+        <div
+          class="col-12 col-md-6 mt-2 mt-md-0 text-md-right"
+          id="dateTime"
+        ></div>
+      </div>
+    </div>
+
+    <!-- Toast wrapper div -->
+    <div class="toast-wrapper"></div>
+
+    <script src="https://storage.googleapis.com/static.increff.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.1/papaparse.min.js"></script>
+  </body>
+</html>

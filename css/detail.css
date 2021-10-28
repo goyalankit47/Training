@@ -1,0 +1,27 @@
+.product-image {
+  overflow: hidden;
+}
+
+.product-image img {
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+}
+
+#productDetails {
+  margin-top: 85px;
+  padding-bottom: 80px;
+}
+
+.product-details .cart-sec {
+  margin-top: initial;
+  position: initial;
+}
+
+.auth-error {
+  margin-top: 85px;
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: 0.75rem 1.25rem;
+  font-size: 1rem;
+  text-align: center;
+}

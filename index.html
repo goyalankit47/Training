@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>All Products</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="-1" />
+    <meta http-equiv="cache-control" content="no-cache" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/login-modal.css" />
+    <link rel="stylesheet" href="/css/toast.css" />
+    <link
+      rel="icon"
+      href="https://storage.googleapis.com/www.increff.com/img/favicon.png?v=2"
+      type="image/x-icon"
+    />
+    <link
+      rel="stylesheet"
+      href="https://storage.googleapis.com/static.increff.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+  </head>
+
+  <body>
+    <!-- Initialization of jquery script before DOM rendering -->
+    <script src="https://storage.googleapis.com/static.increff.com/jquery/3.3.1/jquery-3.3.1.min.js"></script>
+    <script type="module" src="/js/main.js"></script>
+
+    <!-- Header -->
+    <nav class="navbar navbar-light fixed-bar shadow-sm">
+      <div class="container-fluid px-0">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" id="userName" href="/">Home</a>
+          </li>
+        </ul>
+        <ul
+          class="navbar-nav"
+          data-toggle="tooltip"
+          data-placement="top"
+          title="Upload Order CSV"
+        >
+          <li class="nav-item">
+            <a class="nav-link position-relative" href="/pages/upload">
+              <i class="material-icons">upload_file</i>
+            </a>
+          </li>
+        </ul>
+        <ul
+          class="navbar-nav ml-4"
+          data-toggle="tooltip"
+          data-placement="top"
+          title="Cart"
+        >
+          <li class="nav-item">
+            <a class="nav-link position-relative" href="/pages/checkout">
+              <i class="material-icons">shopping_cart</i>
+              <div class="cart-quantity"></div>
+            </a>
+          </li>
+        </ul>
+        <ul
+          class="navbar-nav ml-4"
+          id="logout"
+          data-toggle="tooltip"
+          data-placement="top"
+          title="Logout"
+        >
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <i class="material-icons">logout</i>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Main Body -->
+    <div class="container d-none" id="productList">
+      <h2 class="list-heading mt-3"></h2>
+      <div class="filters-section d-flex align-items-center flex-wrap mt-4">
+        <h5 class="m-0"><b> Filters: </b></h5>
+        <div class="d-flex flex-wrap">
+          <div
+            class="filter-item dim-text border rounded p-2 ml-2 mt-1 cur-pointer active"
+            id="allProducts"
+          >
+            All Products
+          </div>
+          <div
+            class="filter-item dim-text border rounded p-2 ml-2 mt-1 cur-pointer"
+            id="T-shirt"
+          >
+            T-Shirt
+          </div>
+          <div
+            class="filter-item dim-text border rounded p-2 ml-2 mt-1 cur-pointer"
+            id="shirt"
+          >
+            Shirt
+          </div>
+          <div
+            class="filter-item dim-text border rounded p-2 ml-2 mt-1 cur-pointer"
+            id="Denim"
+          >
+            Denim
+          </div>
+          <div
+            class="filter-item dim-text border rounded p-2 ml-2 mt-1 cur-pointer"
+            id="jacket"
+          >
+            Jacket
+          </div>
+        </div>
+      </div>
+      <div class="row products-container justify-content-center">
+        <div class="col-6 col-md-4 col-xl-3 my-4" id="product">
+          <div class="cur-pointer h-100 position-relative">
+            <img
+              class="img-fluid rounded border-0 w-100"
+              onerror="this.src='assets/no-image.png'"
+              src=""
+              alt="Image not Available"
+            />
+
+            <div class="cart-sec">
+              <button class="add-to-cart btn btn-outline-primary w-100 d-none">
+                Add To Cart
+              </button>
+              <div
+                class="modify-quan justify-content-between align-items-center w-100 d-none"
+              >
+                <div class="quantity-sec border rounded">
+                  <span class="subtract mx-2"> - </span>
+                  <span class="quant mx-2"></span>
+                  <span class="add mx-2"> + </span>
+                </div>
+                <div class="in-cart">
+                  Added
+                </div>
+              </div>
+            </div>
+            <h5 class="px-2 my-2 product-heading"></h5>
+            <p class="dim-text px-2 product-subhead"></p>
+            <p class="px-2">
+              <b class="product-price"></b>
+              <span class="dim-text">
+                <strike class="product-disprice"></strike>
+              </span>
+              <span style="color: #ff905a;" class="product-off"> </span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer text-muted">
+      <hr />
+      <div class="container-fluid row justify-content-between mb-4">
+        <div class="col-12 col-md-6">&copy; 2021; All Rights Reserved.</div>
+        <div
+          class="col-12 col-md-6 mt-2 mt-md-0 text-md-right"
+          id="dateTime"
+        ></div>
+      </div>
+    </div>
+
+    <!-- Toast wrapper div -->
+    <div class="toast-wrapper"></div>
+
+    <script src="https://storage.googleapis.com/static.increff.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

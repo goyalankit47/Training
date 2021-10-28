@@ -1,0 +1,18 @@
+.modal-dialog {
+  max-width: 385px !important;
+}
+
+.input-group .input-group-prepend {
+  width: 10%;
+}
+
+.input-group .input-group-prepend .input-group-text {
+  width: 100%;
+  justify-content: center;
+}
+
+.error-msg {
+  font-size: smaller;
+  color: red;
+  margin-bottom: 10px;
+}

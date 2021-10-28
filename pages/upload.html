@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Upload</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="-1" />
+    <meta http-equiv="cache-control" content="no-cache" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/upload.css" />
+    <link rel="stylesheet" href="/css/login-modal.css" />
+    <link rel="stylesheet" href="/css/toast.css" />
+    <link
+      rel="icon"
+      href="https://storage.googleapis.com/www.increff.com/img/favicon.png?v=2"
+      type="image/x-icon"
+    />
+    <link
+      rel="stylesheet"
+      href="https://storage.googleapis.com/static.increff.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+  </head>
+
+  <body>
+    <!-- Initialization of jquery script before DOM rendering -->
+    <script src="https://storage.googleapis.com/static.increff.com/jquery/3.3.1/jquery-3.3.1.min.js"></script>
+    <script type="module" src="/js/upload.js"></script>
+
+    <!-- Header -->
+    <nav class="navbar navbar-light fixed-bar shadow-sm">
+      <div class="container-fluid px-0">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" id="userName" href="/">Home</a>
+          </li>
+        </ul>
+        <ul
+          class="navbar-nav ml-4"
+          data-toggle="tooltip"
+          data-placement="top"
+          title="Cart"
+        >
+          <li class="nav-item">
+            <a class="nav-link position-relative" href="/pages/checkout">
+              <i class="material-icons">shopping_cart</i>
+              <div class="cart-quantity"></div>
+            </a>
+          </li>
+        </ul>
+        <ul
+          class="navbar-nav ml-4"
+          id="logout"
+          data-toggle="tooltip"
+          data-placement="top"
+          title="Logout"
+        >
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <i class="material-icons">logout</i>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Main Body -->
+    <div class="container" id="uploadContainer">
+      <input type="file" id="myfile" name="myfile" accept=".csv" />
+      <div
+        class="mt-4 w-100 table-responsive-sm position-relative"
+        id="tableContainer"
+      >
+        <!-- dummy table to show table header as fixed -->
+        <!-- <div class="container" id="header-fixed">
+          <div class="w-100 table-responsive position-relative overflow-hidden">
+            <table class="table table-bordered m-0"></table>
+          </div>
+        </div> -->
+
+        <table class="table table-bordered" id="actualTable">
+          <thead class="thead-dark text-capitalize"></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <div class="d-none error-div">
+        <h3 class="mb-4"> Parse Errors - </h3>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer text-muted">
+      <hr />
+      <div class="container-fluid row justify-content-between mb-4">
+        <div class="col-12 col-md-6">&copy; 2021; All Rights Reserved.</div>
+        <div
+          class="col-12 col-md-6 mt-2 mt-md-0 text-md-right"
+          id="dateTime"
+        ></div>
+      </div>
+    </div>
+
+    <!-- Toast wrapper div -->
+    <div class="toast-wrapper"></div>
+
+    <script src="https://storage.googleapis.com/static.increff.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.1/papaparse.min.js"></script>
+  </body>
+</html>
