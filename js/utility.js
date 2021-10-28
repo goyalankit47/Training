@@ -263,6 +263,11 @@ const initializeAllTooltips = () => {
     container: "body",
     trigger: "hover",
   });
+
+  // removing tooltip in case of element click
+  $('[data-toggle="tooltip"]').click(()=>{
+    $('.tooltip').remove();
+  });
 };
 
 // handles change in userId dynamically
