@@ -178,7 +178,12 @@ const findItem = (itemId) => {
 
 // get items from cart
 const getCartItems = () => {
-  return JSON.parse(localStorage.getItem("cartItems") || "[]");
+  try {
+    return JSON.parse(localStorage.getItem("cartItems") || "[]");
+  } catch (e) {
+    setCartItems([]);
+    return [];
+  }
 };
 
 // set cart items
@@ -239,7 +244,11 @@ const showUserName = () => {
     const user = users?.find(
       (item) => item?.id === Number(localStorage.getItem("userId") || "-1")
     );
-    $("#userName").text(`Welcome, ${user?.name}`);
+    if (user) {
+      $("#userName").text(`Welcome, ${user?.name}`);
+    } else {
+      logout();
+    }
   });
 };
 
@@ -252,8 +261,19 @@ const getDateTime = () => {
 const initializeAllTooltips = () => {
   $('[data-toggle="tooltip"]').tooltip({
     container: "body",
-    trigger: "hover"
+    trigger: "hover",
   });
+};
+
+// handles change in userId dynamically
+const listenStorageChange = () => {
+  window.onstorage = (ev) => {
+    if (ev.key === "userId") {
+      if (ev.oldValue !== ev.newValue) {
+        openLoginModal();
+      }
+    }
+  };
 };
 
 const setOnLogin = () => {
@@ -262,6 +282,7 @@ const setOnLogin = () => {
   getDateTime();
   setCartQuantity(getCartItems());
   initializeAllTooltips();
+  listenStorageChange();
 };
 
 export {

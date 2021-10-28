@@ -93,7 +93,7 @@ const handleFileInput = () => {
             if (!ext || ext[1] !== "csv") {
               return {
                 action: "abort",
-                reason: "File Type must be CSV only!",
+                reason: "File type must be CSV only!",
               };
             }
           },
@@ -116,7 +116,7 @@ const processCSVParse = (res) => {
   const dataHeader = res?.data[0];
   if (dataHeader.length !== tableHeader.length) {
     errorDiv.append(
-      `<p> Header Error : Number of columns in CSV Header doesn't match with the required one. </p>`
+      `<p> Header Error : Number of columns in CSV header doesn't match with the required one. </p>`
     );
   } else {
     $.each(tableHeader, (index, item) => {
