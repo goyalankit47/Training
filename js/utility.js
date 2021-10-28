@@ -287,7 +287,7 @@ const setOnLogin = () => {
   getDateTime();
   setCartQuantity(getCartItems());
   initializeAllTooltips();
-  listenStorageChange();
+  // listenStorageChange();
 };
 
 export {
