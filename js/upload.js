@@ -109,6 +109,12 @@ const handleFileInput = () => {
 const processCSVParse = (res) => {
   console.log(res);
 
+  // check if file is empty
+  if(res.data.length < 2) {
+    errorToast("Uploaded File has no data!");
+    return;
+  }
+
   // parse complete data and show all the possible errors
   const errorDiv = $(".error-div");
 
