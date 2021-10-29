@@ -35,13 +35,13 @@
     <nav class="navbar navbar-light fixed-bar shadow-sm">
       <div class="container-fluid px-0">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" id="userName" href="/">Home</a>
+          <li class="nav-item">
+            <a class="nav-link" href="/">Home</a>
           </li>
         </ul>
         <ul
           class="navbar-nav ml-4"
-          data-toggle="tooltip"
+          data-tooltip="tooltip"
           data-placement="top"
           title="Cart"
         >
@@ -52,17 +52,32 @@
             </a>
           </li>
         </ul>
-        <ul
-          class="navbar-nav ml-4"
-          id="logout"
-          data-toggle="tooltip"
-          data-placement="top"
-          title="Logout"
-        >
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <i class="material-icons">logout</i>
+        <ul class="navbar-nav ml-4">
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link btn dropdown-toggle p-0"
+              href="#"
+              role="button"
+              id="dropdownMenuLink"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+              data-tooltip="tooltip"
+              data-placement="top"
+              title="User Profile"
+            >
+              <i class="material-icons">account_circle</i>
             </a>
+
+            <div
+              class="dropdown-menu user-drop"
+              aria-labelledby="dropdownMenuLink"
+            >
+              <h6 class="dropdown-header" id="userName">Username</h6>
+              <button class="dropdown-item" id="logout" type="button">
+                Logout
+              </button>
+            </div>
           </li>
         </ul>
       </div>
@@ -70,6 +85,12 @@
 
     <!-- Main Body -->
     <div class="container" id="uploadContainer">
+      <div class="page-heading">
+        <div class="col-12 px-md-0">
+          <h2>Upload Order as CSV</h2>
+          <hr />
+        </div>
+      </div>
       <input type="file" id="myfile" name="myfile" accept=".csv" />
       <div
         class="mt-4 w-100 table-responsive-sm position-relative"
@@ -88,7 +109,7 @@
         </table>
       </div>
       <div class="d-none error-div">
-        <h3 class="mb-4"> Parse Errors - </h3>
+        <h3 class="mb-4">Parse Errors -</h3>
       </div>
     </div>
 

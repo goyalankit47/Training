@@ -11,11 +11,13 @@ import {
   validateCart,
   initializeAllTooltips,
   clearCart,
+  errorToast,
 } from "./utility.js";
 
 // variables to store payment data
 let totalItems = 0,
-  totalAmount = 0;
+  totalAmount = 0,
+  cartHistory = [];
 
 $(document).ready(() => {
   // check if user already logged in
@@ -34,6 +36,7 @@ const processCartData = () => {
       validateCart(items);
 
       const cartItems = getCartItems();
+      cartHistory = JSON.stringify(cartItems);
       if (cartItems.length) {
         // create product item divs by looping on cart items
         $.each(cartItems, (idx, prod) => {
@@ -62,6 +65,9 @@ const processCartData = () => {
                 totalItems -= 1;
                 totalAmount -= Number(item?.price);
                 setPaymentBlockData();
+
+                // resetting cartHistory variable
+                cartHistory = JSON.stringify(getCartItems());
               }
             });
           });
@@ -78,6 +84,9 @@ const processCartData = () => {
                 totalItems += 1;
                 totalAmount += Number(item?.price);
                 setPaymentBlockData();
+
+                // resetting cartHistory variable
+                cartHistory = JSON.stringify(getCartItems());
               }
             });
           });
@@ -159,19 +168,37 @@ const checkIfCartEmpty = () => {
 const downloadCSV = (products) => {
   const cartItems = getCartItems();
 
-  const headers = ["id", "vendor", "name", "price", "tag", "quantity"];
+  // check in case any cart item got changed
+  if (JSON.stringify(cartItems) !== cartHistory) {
+    errorToast(
+      "Cart Items might have changed. Please refresh the page for latest changes."
+    );
+    return;
+  }
+
+  const headers = [
+    "Product ID",
+    "Vendor",
+    "Name",
+    "Price",
+    "Product Tag",
+    "Quantity"
+  ];
+  const keys = ["id", "vendor", "name", "price", "tag", "quantity"];
 
   // creating an array of rows need to download
   const rows = cartItems.map((item) => {
     const temp = {};
     const product = products.find((product) => product.id === item.id);
 
-    for (const header of headers) {
-      temp[header] =
-        header === "price" ? "$" + product[header] : product[header];
+    for (const index of headers.keys()) {
+      temp[headers[index]] =
+        keys[index] === "price"
+          ? "$" + product[keys[index]]
+          : product[keys[index]];
     }
 
-    temp.quantity = item.quantity;
+    temp.Quantity = item.quantity;
     return temp;
   });
 

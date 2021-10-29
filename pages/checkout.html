@@ -35,13 +35,13 @@
     <nav class="navbar navbar-light fixed-bar shadow-sm">
       <div class="container-fluid px-0">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" id="userName" href="/">Home</a>
+          <li class="nav-item">
+            <a class="nav-link" href="/">Home</a>
           </li>
         </ul>
         <ul
           class="navbar-nav"
-          data-toggle="tooltip"
+          data-tooltip="tooltip"
           data-placement="top"
           title="Upload Order CSV"
         >
@@ -51,17 +51,32 @@
             </a>
           </li>
         </ul>
-        <ul
-          class="navbar-nav ml-4"
-          id="logout"
-          data-toggle="tooltip"
-          data-placement="top"
-          title="Logout"
-        >
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <i class="material-icons">logout</i>
+        <ul class="navbar-nav ml-4">
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link btn dropdown-toggle p-0"
+              href="#"
+              role="button"
+              id="dropdownMenuLink"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+              data-tooltip="tooltip"
+              data-placement="top"
+              title="User Profile"
+            >
+              <i class="material-icons">account_circle</i>
             </a>
+
+            <div
+              class="dropdown-menu user-drop"
+              aria-labelledby="dropdownMenuLink"
+            >
+              <h6 class="dropdown-header" id="userName">Username</h6>
+              <button class="dropdown-item" id="logout" type="button">
+                Logout
+              </button>
+            </div>
           </li>
         </ul>
       </div>
@@ -104,7 +119,7 @@
                 <div
                   class="modify-quan d-flex justify-content-end align-items-center w-100"
                 >
-                  <div class="in-cart mr-2">
+                  <div class="text-success mr-2">
                     Quantity
                   </div>
                   <div class="quantity-sec border rounded">
@@ -116,7 +131,7 @@
               </div>
               <button
                 class="btn delete-btn"
-                data-toggle="tooltip"
+                data-tooltip="tooltip"
                 data-placement="top"
                 title="Remove Item from Cart"
               >
@@ -139,7 +154,7 @@
             </div>
             <button
               class="btn btn-primary csv-download w-100 mt-4 p-2"
-              data-toggle="tooltip"
+              data-tooltip="tooltip"
               data-placement="top"
               title="Checkout & Download Order"
             >

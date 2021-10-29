@@ -35,12 +35,12 @@
       <div class="container-fluid px-0">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" id="userName" href="/">Home</a>
+            <a class="nav-link" href="/">Home</a>
           </li>
         </ul>
         <ul
           class="navbar-nav"
-          data-toggle="tooltip"
+          data-tooltip="tooltip"
           data-placement="top"
           title="Upload Order CSV"
         >
@@ -52,7 +52,7 @@
         </ul>
         <ul
           class="navbar-nav ml-4"
-          data-toggle="tooltip"
+          data-tooltip="tooltip"
           data-placement="top"
           title="Cart"
         >
@@ -63,17 +63,32 @@
             </a>
           </li>
         </ul>
-        <ul
-          class="navbar-nav ml-4"
-          id="logout"
-          data-toggle="tooltip"
-          data-placement="top"
-          title="Logout"
-        >
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <i class="material-icons">logout</i>
+        <ul class="navbar-nav ml-4">
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link btn dropdown-toggle p-0"
+              href="#"
+              role="button"
+              id="dropdownMenuLink"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+              data-tooltip="tooltip"
+              data-placement="top"
+              title="User Profile"
+            >
+              <i class="material-icons">account_circle</i>
             </a>
+
+            <div
+              class="dropdown-menu user-drop"
+              aria-labelledby="dropdownMenuLink"
+            >
+              <h6 class="dropdown-header" id="userName">Username</h6>
+              <button class="dropdown-item" id="logout" type="button">
+                Logout
+              </button>
+            </div>
           </li>
         </ul>
       </div>
@@ -119,13 +134,17 @@
       </div>
       <div class="row products-container justify-content-center">
         <div class="col-6 col-md-4 col-xl-3 my-4" id="product">
-          <div class="cur-pointer h-100 position-relative">
+          <div class="cur-pointer h-100 position-relative overflow-hidden">
             <img
               class="img-fluid rounded border-0 w-100"
               onerror="this.src='assets/no-image.png'"
               src=""
               alt="Image not Available"
             />
+
+            <div class="in-cart d-none">
+              In Cart
+            </div>
 
             <div class="cart-sec">
               <button class="add-to-cart btn btn-outline-primary w-100 d-none">
@@ -135,12 +154,12 @@
                 class="modify-quan justify-content-between align-items-center w-100 d-none"
               >
                 <div class="quantity-sec border rounded">
-                  <span class="subtract mx-2"> - </span>
-                  <span class="quant mx-2"></span>
-                  <span class="add mx-2"> + </span>
+                  <span class="subtract mx-1 mx-md-2"> - </span>
+                  <span class="quant mx-1 mx-md-2"></span>
+                  <span class="add mx-1 mx-md-2"> + </span>
                 </div>
-                <div class="in-cart">
-                  Added
+                <div class="text-success ml-2">
+                  Quantity
                 </div>
               </div>
             </div>

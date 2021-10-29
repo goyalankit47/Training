@@ -9,15 +9,85 @@ const checkIfUserAuthenticated = (callback) => {
 };
 
 const openLoginModal = () => {
-  $("body").load("/pages/login-modal.html", () => {
-    // clearing localstorage before loginset
-    localStorage.clear();
+  // used in case of using load function
+  // $("body").load("/pages/login-modal.html", () => {
+  //   // clearing localstorage before loginset
+  //   localStorage.clear();
 
-    // subscribe form submission
-    subscribeFormSubmission();
+  //   // subscribe form submission
+  //   subscribeFormSubmission();
 
-    $("#loginModal").modal({ backdrop: "static", keyboard: false });
-  });
+  //   $("#loginModal").modal({ backdrop: "static", keyboard: false });
+  // });
+
+  $("body").append(`<div
+  class="modal fade d-flex"
+  id="loginModal"
+  tabindex="-1"
+  aria-labelledby="loginModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog m-auto col-12 col-sm-8 col-md-6 col-lg-5 col-xl-3">
+    <div class="modal-content border rounded shadow">
+      <div class="card-head p-2">
+        <h2 class="modal-title text-center mb-2 text-info">E-Commerce</h2>
+        <h3 class="modal-title text-center" id="loginModalLabel">Login</h3>
+        <hr />
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group mb-4">
+            <label for="email" class="font-weight-bold">Email</label>
+            <input
+              type="email"
+              class="form-control"
+              name="email"
+              id="email"
+              placeholder="Example:- test@increff.com"
+              required
+            />
+          </div>
+          <div class="form-group mb-4">
+            <label for="password" class="font-weight-bold">Password</label>
+            <input
+              type="password"
+              class="form-control"
+              name="password"
+              id="password"
+              required
+            />
+          </div>
+          <div
+            class="error-msg bg-light p-1 text-center d-none"
+            id="error-message"
+          >
+            *Username or password is incorrect
+          </div>
+          <button
+            type="submit"
+            class="btn btn-outline-primary mx-auto d-block px-4 py-2"
+          >
+            Submit
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>`);
+
+  /**
+   *
+   *
+   *
+   */
+
+  // clearing localstorage before loginset
+  localStorage.clear();
+
+  // subscribe form submission
+  subscribeFormSubmission();
+
+  $("#loginModal").modal({ backdrop: "static", keyboard: false });
 };
 
 const subscribeFormSubmission = () => {
@@ -245,7 +315,7 @@ const showUserName = () => {
       (item) => item?.id === Number(localStorage.getItem("userId") || "-1")
     );
     if (user) {
-      $("#userName").text(`Welcome, ${user?.name}`);
+      $("#userName").text(`${user?.name}`);
     } else {
       logout();
     }
@@ -259,14 +329,14 @@ const getDateTime = () => {
 };
 
 const initializeAllTooltips = () => {
-  $('[data-toggle="tooltip"]').tooltip({
+  $('[data-tooltip="tooltip"]').tooltip({
     container: "body",
     trigger: "hover",
   });
 
   // removing tooltip in case of element click
-  $('[data-toggle="tooltip"]').click(()=>{
-    $('.tooltip').remove();
+  $('[data-tooltip="tooltip"]').click(() => {
+    $(".tooltip").remove();
   });
 };
 

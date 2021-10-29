@@ -49,6 +49,7 @@ const productListShow = () => {
                 .find(`.cart-sec .modify-quan`)
                 .removeClass("d-none")
                 .addClass("d-flex");
+              newElem.find(`.in-cart`).removeClass("d-none");
             }
           });
         });
@@ -64,6 +65,7 @@ const productListShow = () => {
                   .removeClass("d-flex")
                   .addClass("d-none");
                 newElem.find(`.cart-sec .add-to-cart`).removeClass("d-none");
+                newElem.find(`.in-cart`).addClass("d-none");
               } else {
                 newElem
                   .find(`.cart-sec .modify-quan .quant`)
@@ -94,6 +96,7 @@ const productListShow = () => {
           newElem
             .find(`.cart-sec .modify-quan .quant`)
             .text(findItem(item?.id).quantity);
+          newElem.find(`.in-cart`).removeClass("d-none");
         } else {
           newElem.find(`.cart-sec .add-to-cart`).removeClass("d-none");
         }
@@ -133,7 +136,8 @@ const productListShow = () => {
           .find(".product-off")
           .text(
             `(${Math.round(
-              ((item?.compare_at_price - item?.price) / item?.compare_at_price) *
+              ((item?.compare_at_price - item?.price) /
+                item?.compare_at_price) *
                 100
             )} % off)`
           );
@@ -154,16 +158,20 @@ const addListenerOnFilters = () => {
   $(".filter-item").click((event) => {
     $(".filter-item").removeClass("active");
 
+    let itemsVisible = 0;
     // > => direct child selector
     $(".products-container > div").each(function (index) {
       if (
         event.target.id === "allProducts" ||
         $(this).attr("tag") === event.target.id
       ) {
+        itemsVisible += 1;
         $(this).removeClass("d-none");
       } else {
         $(this).addClass("d-none");
       }
+      // setting list heading
+      $(".list-heading").text(`Products (${itemsVisible})`);
     });
     $(`#${event.target.id}`).addClass("active");
   });

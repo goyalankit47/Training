@@ -5,7 +5,14 @@ import {
   successToast,
 } from "./utility.js";
 
-const tableHeader = ["id", "vendor", "name", "price", "tag", "quantity"];
+const tableHeader = [
+  "Product ID",
+  "Vendor",
+  "Name",
+  "Price",
+  "Product Tag",
+  "Quantity",
+];
 // let rowsData = [];
 
 $(document).ready(() => {
@@ -110,7 +117,7 @@ const processCSVParse = (res) => {
   console.log(res);
 
   // check if file is empty
-  if(res.data.length < 2) {
+  if (res.data.length < 2) {
     errorToast("Uploaded File has no data!");
     return;
   }

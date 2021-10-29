@@ -35,13 +35,13 @@
     <nav class="navbar navbar-light fixed-bar shadow-sm">
       <div class="container-fluid px-0">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" id="userName" href="/">Home</a>
+          <li class="nav-item">
+            <a class="nav-link" href="/">Home</a>
           </li>
         </ul>
         <ul
           class="navbar-nav"
-          data-toggle="tooltip"
+          data-tooltip="tooltip"
           data-placement="top"
           title="Upload Order CSV"
         >
@@ -53,7 +53,7 @@
         </ul>
         <ul
           class="navbar-nav ml-4"
-          data-toggle="tooltip"
+          data-tooltip="tooltip"
           data-placement="top"
           title="Cart"
         >
@@ -64,27 +64,50 @@
             </a>
           </li>
         </ul>
-        <ul
-          class="navbar-nav ml-4"
-          id="logout"
-          data-toggle="tooltip"
-          data-placement="top"
-          title="Logout"
-        >
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <i class="material-icons">logout</i>
+        <ul class="navbar-nav ml-4">
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link btn dropdown-toggle p-0"
+              href="#"
+              role="button"
+              id="dropdownMenuLink"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+              data-tooltip="tooltip"
+              data-placement="top"
+              title="User Profile"
+            >
+              <i class="material-icons">account_circle</i>
             </a>
+
+            <div
+              class="dropdown-menu user-drop"
+              aria-labelledby="dropdownMenuLink"
+            >
+              <h6 class="dropdown-header" id="userName">Username</h6>
+              <button class="dropdown-item" id="logout" type="button">
+                Logout
+              </button>
+            </div>
           </li>
         </ul>
       </div>
     </nav>
 
     <!-- In case of product id mismatch -->
-    <div class="auth-error d-none"> 404, Product Not Found! Please check Product ID </div>
+    <div class="auth-error d-none">
+      404, Product Not Found! Please check Product ID
+    </div>
 
     <!-- Main Body -->
     <div class="container d-none" id="productDetails">
+      <div class="page-heading">
+        <div class="col-12 px-md-0">
+          <h2>Product Details</h2>
+          <hr />
+        </div>
+      </div>
       <div class="row">
         <div class="col-12 col-md-4 product-image rounded px-md-0">
           <img
@@ -106,27 +129,29 @@
             </span>
             <span style="color: #ff905a;" id="productOff"> </span>
           </p>
-          <div class="cart-sec col-12 col-sm-7 col-md-3 col-lg-4">
-            <button class="add-to-cart btn btn-outline-primary w-100 d-none">
+          <div class="cart-sec col-12">
+            <button
+              class="add-to-cart btn btn-outline-primary col-12 col-sm-7 col-md-3 col-lg-4 d-none"
+            >
               Add To Cart
             </button>
             <div
-              class="modify-quan justify-content-between align-items-center w-100 d-none"
+              class="modify-quan justify-content-start align-items-center w-100 d-none"
             >
               <div class="quantity-sec border rounded">
                 <span class="subtract mx-2 cur-pointer"> - </span>
                 <span class="quant mx-2"></span>
                 <span class="add mx-2 cur-pointer"> + </span>
               </div>
-              <div class="in-cart">
-                Added
+              <div class="text-success ml-4">
+                Quantity (In Cart)
               </div>
             </div>
           </div>
           <hr />
           <div class="prod-desc px-2">
             <h5><b>Description</b></h5>
-            <div id="prodDesc"></div>
+            <div class="dim-text" id="prodDesc"></div>
           </div>
         </div>
       </div>
@@ -143,7 +168,7 @@
         ></div>
       </div>
     </div>
-    
+
     <!-- Toast wrapper div -->
     <div class="toast-wrapper"></div>
 
