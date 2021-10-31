@@ -87,11 +87,40 @@
     <div class="container" id="uploadContainer">
       <div class="page-heading">
         <div class="col-12 px-md-0">
-          <h2>Upload Order as CSV</h2>
+          <div class="d-flex justify-content-between">
+            <h2>Upload Order as CSV</h2>
+            <button
+              class="btn btn-primary"
+              data-tooltip="tooltip"
+              data-placement="top"
+              title="Download CSV Template"
+              id="downloadTemplate"
+            >
+              <span class="material-icons align-middle">
+                file_download
+              </span>
+              Template
+            </button>
+          </div>
           <hr />
         </div>
       </div>
-      <input type="file" id="myfile" name="myfile" accept=".csv" />
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Upload</span>
+        </div>
+        <div class="custom-file">
+          <input
+            type="file"
+            class="custom-file-input"
+            id="myfile"
+            accept=".csv"
+          />
+          <label class="custom-file-label" for="inputGroupFile01"
+            >Choose file</label
+          >
+        </div>
+      </div>
       <div
         class="mt-4 w-100 table-responsive-sm position-relative"
         id="tableContainer"

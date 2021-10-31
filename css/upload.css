@@ -31,3 +31,7 @@
     top: 65px;
   }
 }
+
+.input-group .input-group-prepend {
+  width: 20% !important;
+}

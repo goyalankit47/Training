@@ -30,8 +30,8 @@ $(document).ready(() => {
 });
 
 const processCartData = () => {
-  $.getJSON("/assets/available-inventory.json", (products) => {}).done(
-    (items) => {
+  $.getJSON("/assets/available-inventory.json", (products) => {})
+    .done((items) => {
       // validate cart
       validateCart(items);
 
@@ -146,8 +146,10 @@ const processCartData = () => {
         // show no data in cart
         $("#noData").removeClass("d-none");
       }
-    }
-  );
+    })
+    .fail(() => {
+      errorToast("Something went wrong!");
+    });
 };
 
 const setPaymentBlockData = () => {
@@ -166,6 +168,7 @@ const checkIfCartEmpty = () => {
 
 // download order as CSV
 const downloadCSV = (products) => {
+  validateCart(products);
   const cartItems = getCartItems();
 
   // check in case any cart item got changed
@@ -182,7 +185,7 @@ const downloadCSV = (products) => {
     "Name",
     "Price",
     "Product Tag",
-    "Quantity"
+    "Quantity",
   ];
   const keys = ["id", "vendor", "name", "price", "tag", "quantity"];
 

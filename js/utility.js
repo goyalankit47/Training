@@ -284,7 +284,7 @@ const validateCart = (products) => {
     // check if id is present in product list
     if (
       !products.find((pro) => pro.id === item.id) ||
-      !Number(item.quantity) ||
+      !Number.isInteger(item.quantity) ||
       Number(item.quantity) <= 0
     ) {
       deleteProduct(item, () => {}, true);
